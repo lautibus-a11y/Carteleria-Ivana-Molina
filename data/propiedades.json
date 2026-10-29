@@ -7,7 +7,7 @@
   "propiedades": [
     {
       "id": "prop-1",
-      "activa": true,
+      "activa": false,
       "orden": 1,
       "operacion": "EN ALQUILER",
       "titulo": "Cabaña Con Gran Parque Y Pileta",
@@ -29,7 +29,7 @@
     },
     {
       "id": "prop-2",
-      "activa": true,
+      "activa": false,
       "orden": 2,
       "operacion": "EN ALQUILER",
       "titulo": "Casa Quinta Ejército De Los Andes",
@@ -51,7 +51,7 @@
     },
     {
       "id": "prop-3",
-      "activa": true,
+      "activa": false,
       "orden": 3,
       "operacion": "EN ALQUILER",
       "titulo": "Departamento 2 Ambientes",
@@ -73,7 +73,7 @@
     },
     {
       "id": "prop-4",
-      "activa": true,
+      "activa": false,
       "orden": 4,
       "operacion": "EN ALQUILER",
       "titulo": "Departamento De Categoría Canning",
@@ -95,7 +95,7 @@
     },
     {
       "id": "prop-5",
-      "activa": true,
+      "activa": false,
       "orden": 5,
       "operacion": "EN ALQUILER",
       "titulo": "Galpón Y Predio Comercial",
@@ -117,7 +117,7 @@
     },
     {
       "id": "prop-6",
-      "activa": true,
+      "activa": false,
       "orden": 6,
       "operacion": "EN VENTA",
       "titulo": "Casa En Carlos Tejedor",
@@ -139,7 +139,7 @@
     },
     {
       "id": "prop-7",
-      "activa": true,
+      "activa": false,
       "orden": 7,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta California 5900",
@@ -161,7 +161,7 @@
     },
     {
       "id": "prop-8",
-      "activa": true,
+      "activa": false,
       "orden": 8,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Castex Y Del Carril",
@@ -183,7 +183,7 @@
     },
     {
       "id": "prop-9",
-      "activa": true,
+      "activa": false,
       "orden": 9,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Castro Al 600",
@@ -205,7 +205,7 @@
     },
     {
       "id": "prop-10",
-      "activa": true,
+      "activa": false,
       "orden": 10,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Ceretti 1300",
@@ -227,7 +227,7 @@
     },
     {
       "id": "prop-11",
-      "activa": true,
+      "activa": false,
       "orden": 11,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Con Pileta Y Quincho",
@@ -249,7 +249,7 @@
     },
     {
       "id": "prop-12",
-      "activa": true,
+      "activa": false,
       "orden": 12,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Con Piscina",
@@ -271,7 +271,7 @@
     },
     {
       "id": "prop-13",
-      "activa": true,
+      "activa": false,
       "orden": 13,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Cosme",
@@ -298,24 +298,42 @@
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Cosquín 1120",
       "ubicacion": "Cosquín 1120, 20 de Junio",
-      "precio": "Consultar",
-      "superficie": "1.347 m²",
-      "ambientes": "Ambientes amplios",
-      "dormitorios": "Consulte dorm.",
+      "precio": "USD 250.000",
+      "superficie": "1.347 m² lote",
+      "ambientes": "4 Amb.",
+      "dormitorios": "3 Dorm. (1 suite)",
       "caracteristicas": [
-        "Apto Crédito"
+        "Pileta con Solárium",
+        "Apto Crédito",
+        "Riego por aspersión"
       ],
       "imagenes": [
-        "assets/venta/casas-quinta/CasaQuinta_Venta_Cosquin1120_1347m2_AptoCredito/1.webp",
-        "assets/venta/casas-quinta/CasaQuinta_Venta_Cosquin1120_1347m2_AptoCredito/2.webp",
-        "assets/venta/casas-quinta/CasaQuinta_Venta_Cosquin1120_1347m2_AptoCredito/3.webp",
-        "assets/venta/casas-quinta/CasaQuinta_Venta_Cosquin1120_1347m2_AptoCredito/4.webp",
-        "assets/venta/casas-quinta/CasaQuinta_Venta_Cosquin1120_1347m2_AptoCredito/5.webp"
-      ]
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_01_1.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_02_2.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_03_3.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_04_4.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_05_5.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_06_6.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_07_7.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_08_8.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_09_9.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_10_10.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_11_11.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_12_12.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_13_13.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_14_14.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_15_15.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_16_16.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_17_17.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_18_18.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_19_19.jpg",
+        "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_20_20.jpg"
+      ],
+      "descripcion": "Casa quinta sobre lote de 1.347 m² con gran parque, pileta de 8x4 con solárium y sistema de riego. 3 dormitorios (1 en suite), living-comedor integrados, galería con parrilla y cochera para 3 autos. Apta crédito hipotecario."
     },
     {
       "id": "prop-15",
-      "activa": true,
+      "activa": false,
       "orden": 15,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Cosquín 1400",
@@ -337,7 +355,7 @@
     },
     {
       "id": "prop-16",
-      "activa": true,
+      "activa": false,
       "orden": 16,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Gibraltar I",
@@ -359,7 +377,7 @@
     },
     {
       "id": "prop-17",
-      "activa": true,
+      "activa": false,
       "orden": 17,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Gibraltar Ii",
@@ -381,7 +399,7 @@
     },
     {
       "id": "prop-18",
-      "activa": true,
+      "activa": false,
       "orden": 18,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Girardot 1345",
@@ -403,7 +421,7 @@
     },
     {
       "id": "prop-19",
-      "activa": true,
+      "activa": false,
       "orden": 19,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Juan Pío Gana 4400",
@@ -425,7 +443,7 @@
     },
     {
       "id": "prop-20",
-      "activa": true,
+      "activa": false,
       "orden": 20,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Leopardi 5800",
@@ -447,7 +465,7 @@
     },
     {
       "id": "prop-21",
-      "activa": true,
+      "activa": false,
       "orden": 21,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Manuel Castro 775",
@@ -469,7 +487,7 @@
     },
     {
       "id": "prop-22",
-      "activa": true,
+      "activa": false,
       "orden": 22,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Urien",
@@ -491,7 +509,7 @@
     },
     {
       "id": "prop-23",
-      "activa": true,
+      "activa": false,
       "orden": 23,
       "operacion": "EN VENTA",
       "titulo": "Complejo Río De Janeiro",
@@ -513,7 +531,7 @@
     },
     {
       "id": "prop-24",
-      "activa": true,
+      "activa": false,
       "orden": 24,
       "operacion": "EN VENTA",
       "titulo": "Depto. Independiente La Rosalía",
@@ -535,7 +553,7 @@
     },
     {
       "id": "prop-25",
-      "activa": true,
+      "activa": false,
       "orden": 25,
       "operacion": "EN VENTA",
       "titulo": "Propiedad De 6 Ambientes",
@@ -557,7 +575,7 @@
     },
     {
       "id": "prop-26",
-      "activa": true,
+      "activa": false,
       "orden": 26,
       "operacion": "EN VENTA",
       "titulo": "Quinta El Maestro",
@@ -582,48 +600,71 @@
       "activa": true,
       "orden": 27,
       "operacion": "EN VENTA",
-      "titulo": "Residencia Carlos Cassafousth 541",
+      "titulo": "Casa Quinta Carlos Cassafousth 541",
       "ubicacion": "Carlos Cassafousth 541, 20 de Junio",
-      "precio": "Consultar",
-      "superficie": "Consulte m²",
-      "ambientes": "Ambientes amplios",
-      "dormitorios": "Consulte dorm.",
+      "precio": "USD 250.000",
+      "superficie": "1.500 m² lote / 285 m² cub.",
+      "ambientes": "3 Amb. + Quincho",
+      "dormitorios": "2 Dorm. (1 suite)",
       "caracteristicas": [
-        "Gran Parque y Piscina"
+        "Pileta con Hidromasaje",
+        "Quincho y Parque",
+        "Portón Automatizado"
       ],
       "imagenes": [
-        "assets/venta/casas-quinta/ Carlos Cassafouth 541/Cassafouth 541_WhatsApp Image 2026-10-05 at 5.34.29 PM (1).webp",
-        "assets/venta/casas-quinta/ Carlos Cassafouth 541/Cassafouth 541_WhatsApp Image 2026-10-05 at 5.34.30 PM (1).webp",
-        "assets/venta/casas-quinta/ Carlos Cassafouth 541/Cassafouth 541_WhatsApp Image 2026-10-05 at 5.34.25 PM (1).webp",
-        "assets/venta/casas-quinta/ Carlos Cassafouth 541/Cassafouth 541_WhatsApp Image 2026-10-05 at 5.34.26 PM (1).webp",
-        "assets/venta/casas-quinta/ Carlos Cassafouth 541/Cassafouth 541_WhatsApp Image 2026-10-05 at 5.34.33 PM (1).webp"
-      ]
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_01_Cassafouth_541_Pileta_1.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_02_Cassafouth_541_Pileta_2.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_03_Cassafouth_541_pileta_3.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_04_Cassafouth_541_quiatrperson.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_05_Cassafouth_541_Quitar_Auto_1.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_06_Cassafouth_541_Quitarpersonacomedor.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_07_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_16_PM__1_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_08_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_16_PM__3_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_09_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_18_PM__2_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_10_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_18_PM__4_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_11_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_19_PM__1_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_12_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_19_PM__2_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_13_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_19_PM__3_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_14_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_19_PM.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_15_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_20_PM__2_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_16_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_20_PM__3_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_17_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_20_PM.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_18_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_21_PM__1_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_19_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_21_PM__2_.jpg",
+        "assets/propiedades_de_presentacion/Cassafouth_--_541/limpia_20_Cassafouth_541_WhatsApp_Image_2026-10-05_at_5_34_21_PM__3_.jpg"
+      ],
+      "descripcion": "Diseño moderno de categoría con 9 años de antigüedad sobre lote de 1.500 m² y 285 m² cubiertos. Living con salamandra, cocina equipada, quincho integrado con parrilla, 2 dormitorios (suite con vestidor), pileta de 8x2 con hidromasaje y amplio parque perimetrado."
     },
     {
       "id": "prop-28",
       "activa": true,
       "orden": 28,
       "operacion": "EN VENTA",
-      "titulo": "Residencia En Venta Aguapey",
-      "ubicacion": "Aguapey, Zona Oeste",
-      "precio": "Consultar",
-      "superficie": "Consulte m²",
-      "ambientes": "Ambientes amplios",
-      "dormitorios": "Consulte dorm.",
+      "titulo": "Casa En Venta Aguapey",
+      "ubicacion": "Aguapey, 20 de Junio",
+      "precio": "USD 135.000",
+      "superficie": "1.316 m² lote / 114 m² cub.",
+      "ambientes": "2 Amb. amplios",
+      "dormitorios": "1 Dorm. en suite",
       "caracteristicas": [
-        "Espacio verde"
+        "Apto Crédito",
+        "Gran Parque y Galería",
+        "Salamandra a Leña"
       ],
       "imagenes": [
-        "assets/venta/casas-quinta/aguapey-venta/1.webp",
-        "assets/venta/casas-quinta/aguapey-venta/2.webp",
-        "assets/venta/casas-quinta/aguapey-venta/3.webp",
-        "assets/venta/casas-quinta/aguapey-venta/4.webp",
-        "assets/venta/casas-quinta/aguapey-venta/5.webp"
-      ]
+        "assets/propiedades_de_presentacion/AGUAPEY_--_VENTA/limpia_01_1.jpg",
+        "assets/propiedades_de_presentacion/AGUAPEY_--_VENTA/limpia_02_2.jpg",
+        "assets/propiedades_de_presentacion/AGUAPEY_--_VENTA/limpia_03_3.jpg",
+        "assets/propiedades_de_presentacion/AGUAPEY_--_VENTA/limpia_04_4.jpg",
+        "assets/propiedades_de_presentacion/AGUAPEY_--_VENTA/limpia_05_5.jpg",
+        "assets/propiedades_de_presentacion/AGUAPEY_--_VENTA/limpia_06_6.jpg",
+        "assets/propiedades_de_presentacion/AGUAPEY_--_VENTA/limpia_07_7.jpg"
+      ],
+      "descripcion": "Hermosa propiedad de 8 años de antigüedad sobre lote de 1.316 m² cercado y parquizado. 114 m² cubiertos en doble pared de ladrillo visto, aberturas DVH, ambiente integrado con salamandra, suite con vestidor, galería semicubierta/quincho. Apta crédito hipotecario."
     },
     {
       "id": "prop-29",
-      "activa": true,
+      "activa": false,
       "orden": 29,
       "operacion": "EN VENTA",
       "titulo": "Residencia La Rosalía",
@@ -645,7 +686,7 @@
     },
     {
       "id": "prop-30",
-      "activa": true,
+      "activa": false,
       "orden": 30,
       "operacion": "EN VENTA",
       "titulo": "Departamento Av. Rivadavia 14600",
@@ -667,7 +708,7 @@
     },
     {
       "id": "prop-31",
-      "activa": true,
+      "activa": false,
       "orden": 31,
       "operacion": "EN VENTA",
       "titulo": "Lote De Terreno Cassafousth",
@@ -689,7 +730,7 @@
     },
     {
       "id": "prop-32",
-      "activa": true,
+      "activa": false,
       "orden": 32,
       "operacion": "EN VENTA",
       "titulo": "Terreno Alejo Castex",
@@ -711,26 +752,38 @@
       "activa": true,
       "orden": 33,
       "operacion": "EN VENTA",
-      "titulo": "Terreno Camilo Torres Y M. Rico",
+      "titulo": "Lote En Venta Camilo Torres Y M. Rico",
       "ubicacion": "Camilo Torres y Manuel Rico, 20 de Junio",
-      "precio": "Consultar",
-      "superficie": "Lote Amplio",
-      "ambientes": "--",
+      "precio": "USD 63.000",
+      "superficie": "1.100 m² lote",
+      "ambientes": "Lote Residencial",
       "dormitorios": "--",
       "caracteristicas": [
-        "Excelente entorno"
+        "Excelente Entorno Natural",
+        "Ideal Desarrollo / Inversión"
       ],
       "imagenes": [
-        "assets/venta/terrenos/Camilo torres manuel rico marca de agua/wm_WhatsApp Image 2026-10-16 at 16.26.56 (1).jpeg",
-        "assets/venta/terrenos/Camilo torres manuel rico marca de agua/wm_WhatsApp Image 2026-10-16 at 16.26.54 (1).jpeg",
-        "assets/venta/terrenos/Camilo torres manuel rico marca de agua/wm_WhatsApp Image 2026-10-16 at 16.26.55 (1).jpeg",
-        "assets/venta/terrenos/Camilo torres manuel rico marca de agua/wm_WhatsApp Image 2026-10-16 at 16.26.53 (1).jpeg",
-        "assets/venta/terrenos/Camilo torres manuel rico marca de agua/wm_WhatsApp Image 2026-10-16 at 16.26.53 (2).jpeg"
-      ]
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_01_WhatsApp_Image_2026-10-16_at_16_26_52.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_02_WhatsApp_Image_2026-10-16_at_16_26_53__1_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_03_WhatsApp_Image_2026-10-16_at_16_26_53__2_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_04_WhatsApp_Image_2026-10-16_at_16_26_53__3_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_05_WhatsApp_Image_2026-10-16_at_16_26_53.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_06_WhatsApp_Image_2026-10-16_at_16_26_54__1_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_07_WhatsApp_Image_2026-10-16_at_16_26_54__2_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_08_WhatsApp_Image_2026-10-16_at_16_26_54__3_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_09_WhatsApp_Image_2026-10-16_at_16_26_54.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_10_WhatsApp_Image_2026-10-16_at_16_26_55__1_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_11_WhatsApp_Image_2026-10-16_at_16_26_55__2_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_12_WhatsApp_Image_2026-10-16_at_16_26_55__3_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_13_WhatsApp_Image_2026-10-16_at_16_26_55.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_14_WhatsApp_Image_2026-10-16_at_16_26_56__1_.jpg",
+        "assets/propiedades_de_presentacion/Camilo_torres_--_y_manuel_rico/limpia_15_WhatsApp_Image_2026-10-16_at_16_26_56.jpg"
+      ],
+      "descripcion": "Excelente lote de aproximadamente 1.100 m² en intersección de Camilo Torres y Manuel Rico, zona tranquila y en crecimiento. Estudio técnico y factibilidad de subdivisión aprobada por agrimensor según zonificación."
     },
     {
       "id": "prop-34",
-      "activa": true,
+      "activa": false,
       "orden": 34,
       "operacion": "EN VENTA",
       "titulo": "Terreno En Venta Cosme",
@@ -752,7 +805,7 @@
     },
     {
       "id": "prop-35",
-      "activa": true,
+      "activa": false,
       "orden": 35,
       "operacion": "EN VENTA",
       "titulo": "Terreno Juan Casacuberta",
@@ -771,7 +824,7 @@
     },
     {
       "id": "prop-36",
-      "activa": true,
+      "activa": false,
       "orden": 36,
       "operacion": "EN VENTA",
       "titulo": "Terreno M. A. Castro Y P. De Los Libres",
@@ -791,7 +844,7 @@
     },
     {
       "id": "prop-37",
-      "activa": true,
+      "activa": false,
       "orden": 37,
       "operacion": "EN VENTA",
       "titulo": "Terreno Pablo Ceretti",
@@ -812,7 +865,7 @@
     },
     {
       "id": "prop-38",
-      "activa": true,
+      "activa": false,
       "orden": 38,
       "operacion": "EN VENTA",
       "titulo": "Terreno Río De Janeiro",
