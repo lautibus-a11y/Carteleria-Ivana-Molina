@@ -7,7 +7,7 @@
   "propiedades": [
     {
       "id": "prop-1",
-      "activa": false,
+      "activa": true,
       "orden": 1,
       "operacion": "EN ALQUILER",
       "titulo": "Cabaña Con Gran Parque Y Pileta",
@@ -29,7 +29,7 @@
     },
     {
       "id": "prop-2",
-      "activa": false,
+      "activa": true,
       "orden": 2,
       "operacion": "EN ALQUILER",
       "titulo": "Casa Quinta Ejército De Los Andes",
@@ -51,7 +51,7 @@
     },
     {
       "id": "prop-3",
-      "activa": false,
+      "activa": true,
       "orden": 3,
       "operacion": "EN ALQUILER",
       "titulo": "Departamento 2 Ambientes",
@@ -73,7 +73,7 @@
     },
     {
       "id": "prop-4",
-      "activa": false,
+      "activa": true,
       "orden": 4,
       "operacion": "EN ALQUILER",
       "titulo": "Departamento De Categoría Canning",
@@ -95,7 +95,7 @@
     },
     {
       "id": "prop-5",
-      "activa": false,
+      "activa": true,
       "orden": 5,
       "operacion": "EN ALQUILER",
       "titulo": "Galpón Y Predio Comercial",
@@ -117,7 +117,7 @@
     },
     {
       "id": "prop-6",
-      "activa": false,
+      "activa": true,
       "orden": 6,
       "operacion": "EN VENTA",
       "titulo": "Casa En Carlos Tejedor",
@@ -139,7 +139,7 @@
     },
     {
       "id": "prop-7",
-      "activa": false,
+      "activa": true,
       "orden": 7,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta California 5900",
@@ -161,7 +161,7 @@
     },
     {
       "id": "prop-8",
-      "activa": false,
+      "activa": true,
       "orden": 8,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Castex Y Del Carril",
@@ -183,7 +183,7 @@
     },
     {
       "id": "prop-9",
-      "activa": false,
+      "activa": true,
       "orden": 9,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Castro Al 600",
@@ -205,7 +205,7 @@
     },
     {
       "id": "prop-10",
-      "activa": false,
+      "activa": true,
       "orden": 10,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Ceretti 1300",
@@ -227,7 +227,7 @@
     },
     {
       "id": "prop-11",
-      "activa": false,
+      "activa": true,
       "orden": 11,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Con Pileta Y Quincho",
@@ -249,7 +249,7 @@
     },
     {
       "id": "prop-12",
-      "activa": false,
+      "activa": true,
       "orden": 12,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Con Piscina",
@@ -271,7 +271,7 @@
     },
     {
       "id": "prop-13",
-      "activa": false,
+      "activa": true,
       "orden": 13,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Cosme",
@@ -331,7 +331,7 @@
     },
     {
       "id": "prop-15",
-      "activa": false,
+      "activa": true,
       "orden": 15,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Cosquín 1400",
@@ -353,7 +353,7 @@
     },
     {
       "id": "prop-16",
-      "activa": false,
+      "activa": true,
       "orden": 16,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Gibraltar I",
@@ -375,7 +375,7 @@
     },
     {
       "id": "prop-17",
-      "activa": false,
+      "activa": true,
       "orden": 17,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Gibraltar Ii",
@@ -397,7 +397,7 @@
     },
     {
       "id": "prop-18",
-      "activa": false,
+      "activa": true,
       "orden": 18,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Girardot 1345",
@@ -419,7 +419,7 @@
     },
     {
       "id": "prop-19",
-      "activa": false,
+      "activa": true,
       "orden": 19,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Juan Pío Gana 4400",
@@ -441,7 +441,7 @@
     },
     {
       "id": "prop-20",
-      "activa": false,
+      "activa": true,
       "orden": 20,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Leopardi 5800",
@@ -463,7 +463,7 @@
     },
     {
       "id": "prop-21",
-      "activa": false,
+      "activa": true,
       "orden": 21,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Manuel Castro 775",
@@ -485,7 +485,7 @@
     },
     {
       "id": "prop-22",
-      "activa": false,
+      "activa": true,
       "orden": 22,
       "operacion": "EN VENTA",
       "titulo": "Casa Quinta Urien",
@@ -507,7 +507,7 @@
     },
     {
       "id": "prop-23",
-      "activa": false,
+      "activa": true,
       "orden": 23,
       "operacion": "EN VENTA",
       "titulo": "Complejo Río De Janeiro",
@@ -529,7 +529,7 @@
     },
     {
       "id": "prop-24",
-      "activa": false,
+      "activa": true,
       "orden": 24,
       "operacion": "EN VENTA",
       "titulo": "Depto. Independiente La Rosalía",
@@ -551,7 +551,7 @@
     },
     {
       "id": "prop-25",
-      "activa": false,
+      "activa": true,
       "orden": 25,
       "operacion": "EN VENTA",
       "titulo": "Propiedad De 6 Ambientes",
@@ -573,7 +573,7 @@
     },
     {
       "id": "prop-26",
-      "activa": false,
+      "activa": true,
       "orden": 26,
       "operacion": "EN VENTA",
       "titulo": "Quinta El Maestro",
@@ -661,7 +661,7 @@
     },
     {
       "id": "prop-29",
-      "activa": false,
+      "activa": true,
       "orden": 29,
       "operacion": "EN VENTA",
       "titulo": "Residencia La Rosalía",
@@ -683,7 +683,7 @@
     },
     {
       "id": "prop-30",
-      "activa": false,
+      "activa": true,
       "orden": 30,
       "operacion": "EN VENTA",
       "titulo": "Departamento Av. Rivadavia 14600",
@@ -705,7 +705,7 @@
     },
     {
       "id": "prop-31",
-      "activa": false,
+      "activa": true,
       "orden": 31,
       "operacion": "EN VENTA",
       "titulo": "Lote De Terreno Cassafousth",
@@ -727,7 +727,7 @@
     },
     {
       "id": "prop-32",
-      "activa": false,
+      "activa": true,
       "orden": 32,
       "operacion": "EN VENTA",
       "titulo": "Terreno Alejo Castex",
@@ -780,7 +780,7 @@
     },
     {
       "id": "prop-34",
-      "activa": false,
+      "activa": true,
       "orden": 34,
       "operacion": "EN VENTA",
       "titulo": "Terreno En Venta Cosme",
@@ -802,7 +802,7 @@
     },
     {
       "id": "prop-35",
-      "activa": false,
+      "activa": true,
       "orden": 35,
       "operacion": "EN VENTA",
       "titulo": "Terreno Juan Casacuberta",
@@ -821,7 +821,7 @@
     },
     {
       "id": "prop-36",
-      "activa": false,
+      "activa": true,
       "orden": 36,
       "operacion": "EN VENTA",
       "titulo": "Terreno M. A. Castro Y P. De Los Libres",
@@ -841,7 +841,7 @@
     },
     {
       "id": "prop-37",
-      "activa": false,
+      "activa": true,
       "orden": 37,
       "operacion": "EN VENTA",
       "titulo": "Terreno Pablo Ceretti",
@@ -862,7 +862,7 @@
     },
     {
       "id": "prop-38",
-      "activa": false,
+      "activa": true,
       "orden": 38,
       "operacion": "EN VENTA",
       "titulo": "Terreno Río De Janeiro",
