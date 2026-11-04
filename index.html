@@ -165,13 +165,34 @@
             if (!p) return null;
             const operacion = (p.status || p.operacion || 'EN VENTA').toUpperCase();
             
-            // Buscar si tiene Pileta o Piscina
+            // 1. Buscar si tiene Pileta o Piscina
             let piletaText = '';
             if (p.custom && /pileta|piscina/i.test(p.custom)) {
                 piletaText = p.custom;
             } else if (Array.isArray(p.caracteristicas)) {
                 const found = p.caracteristicas.find(c => /pileta|piscina/i.test(c));
                 if (found) piletaText = found;
+            }
+
+            // 2. Buscar si tiene Arboleda o Espacio Verde
+            let verdeText = '';
+            const isArboleda = (text) => /arboleda/i.test(text);
+            const isVerde = (text) => /espacio verde|verde|parque|entorno natural/i.test(text);
+
+            if (p.custom && isArboleda(p.custom)) {
+                verdeText = 'Arboleda';
+            } else if (p.custom && isVerde(p.custom) && !/pileta|piscina/i.test(p.custom)) {
+                verdeText = 'Espacio verde';
+            } else if (Array.isArray(p.caracteristicas)) {
+                const foundArboleda = p.caracteristicas.find(c => isArboleda(c));
+                if (foundArboleda) {
+                    verdeText = /añosa/i.test(foundArboleda) ? 'Arboleda Añosa' : 'Arboleda';
+                } else {
+                    const foundVerde = p.caracteristicas.find(c => isVerde(c) && !/pileta|piscina/i.test(c));
+                    if (foundVerde) {
+                        verdeText = 'Espacio verde';
+                    }
+                }
             }
 
             const rawImages = p.images || p.imagenes || [];
@@ -186,7 +207,8 @@
                 ambientes: p.ambientes || '',
                 dormitorios: dorms,
                 pileta: piletaText,
-                custom: piletaText,
+                verde: verdeText,
+                custom: [piletaText, verdeText].filter(Boolean).join(' · '),
                 price: p.price || p.precio || '--',
                 status: operacion,
                 images: imgs,
@@ -359,6 +381,14 @@
                         <span class="flex items-center gap-1.5 font-medium text-zinc-700">
                             <svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 20c1.5 0 2.5-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1M3 16c1.5 0 2.5-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1M7 15V6a2 2 0 012-2h1a2 2 0 012 2v9M7 9h5M7 13h5"></path></svg>
                             ${prop.pileta}
+                        </span>
+                    `;
+                }
+                if (prop.verde) {
+                    featuresHTML += `
+                        <span class="flex items-center gap-1.5 font-medium text-zinc-700">
+                            <svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v-7m0 0l-2-2m2 2l2-2M12 3a6 6 0 00-6 6c0 2.1 1.1 3.9 2.7 5h6.6c1.6-1.1 2.7-2.9 2.7-5a6 6 0 00-6-6z"></path></svg>
+                            ${prop.verde}
                         </span>
                     `;
                 }

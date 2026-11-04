@@ -15,7 +15,8 @@ const properties = [
         "ambientes": "4 Amb.",
         "dormitorios": "3 Dorm.",
         "caracteristicas": [
-            "Pileta y Parrilla"
+            "Pileta y Parrilla",
+            "Espacio verde"
         ],
         "imagenes": [
             "assets/alquiler/casas-quintas/castaneda-235/Castanieda_Portada.webp",
@@ -301,7 +302,8 @@ const properties = [
         "ambientes": "4 Amb.",
         "dormitorios": "3 Dorm. (1 suite)",
         "caracteristicas": [
-            "Pileta con Solárium"
+            "Pileta con Solárium",
+            "Espacio verde"
         ],
         "imagenes": [
             "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_01_1.jpg",
