@@ -187,17 +187,17 @@
             };
         }
 
-        // Cargar propiedades iniciales desde propiedades.js o fallback
+        // Cargar propiedades iniciales desde propiedades.js o fallback (solo propiedades activas de presentación)
         let rawInitialProps = (typeof properties !== 'undefined' && Array.isArray(properties) && properties.length > 0)
             ? properties
             : defaultProperties;
 
-        let propList = rawInitialProps.map(normalizeProp);
-        let allCatalogProperties = [...propList]; // Se complementará con data/propiedades.json si está accesible
+        let propList = rawInitialProps.map(normalizeProp).filter(p => p.activa !== false);
+        let allCatalogProperties = [...propList]; // Solo propiedades activas de presentación
 
         // Configuración de tiempos
         const TIME_PER_SLIDE = 7000; // 7 segundos por foto
-        const FADE_DURATION = 1500;  // 1.5 segundos de transición de fundido
+        const FADE_DURATION = 500;   // 500 ms de transición suave (crossfade)
 
         // Variables de estado
         let currentPropIndex = 0;
@@ -229,6 +229,7 @@
         let nextImgObj = null;
         let isFading = false;
         let fadeStartTime = 0;
+        let fadeAnimationId = null;
 
         /**
          * Ajusta el tamaño del canvas al tamaño real de la pantalla
@@ -379,38 +380,42 @@
 
         /**
          * Bucle de animación manejado por requestAnimationFrame
-         * Se encarga del fundido entre imágenes.
+         * Se encarga del fundido suave entre imágenes sin dejar jamás la pantalla en negro.
          */
         function animateFade(timestamp) {
+            if (!isFading) {
+                drawStatic();
+                return;
+            }
             if (!fadeStartTime) fadeStartTime = timestamp;
             const elapsed = timestamp - fadeStartTime;
+            const progress = Math.min(elapsed / FADE_DURATION, 1.0);
             
             // Limpiar canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#000';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            if (isFading) {
-                const progress = Math.min(elapsed / FADE_DURATION, 1.0);
-                
-                // Dibujar imagen anterior de fondo
-                if (currentImgObj) {
-                    drawImageCover(ctx, currentImgObj, 1.0);
-                }
-                
-                // Dibujar nueva imagen por encima con opacidad progresiva
-                if (nextImgObj) {
-                    drawImageCover(ctx, nextImgObj, progress);
-                }
+            // 1. Dibujar SIEMPRE la imagen anterior de fondo fija al 100% de opacidad
+            if (currentImgObj) {
+                drawImageCover(ctx, currentImgObj, 1.0);
+            }
+            
+            // 2. Dibujar la nueva imagen por encima con opacidad progresiva
+            if (nextImgObj) {
+                drawImageCover(ctx, nextImgObj, progress);
+            }
 
-                if (progress < 1.0) {
-                    requestAnimationFrame(animateFade);
-                } else {
-                    // Fin del fundido
-                    isFading = false;
+            if (progress < 1.0) {
+                fadeAnimationId = requestAnimationFrame(animateFade);
+            } else {
+                // Fin del fundido: la nueva imagen pasa a ser la actual
+                isFading = false;
+                fadeAnimationId = null;
+                if (nextImgObj) {
                     currentImgObj = nextImgObj;
-                    drawStatic();
                 }
+                drawStatic();
             }
         }
 
@@ -418,6 +423,7 @@
          * Dibuja la imagen actual sin animaciones (estado de reposo)
          */
         function drawStatic() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#000';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             if (currentImgObj) {
@@ -459,31 +465,50 @@
         }
 
         /**
-         * Mostrar una diapositiva específica
+         * Mostrar una diapositiva específica con fundido suave
          */
         async function displaySlide(prop, imgIndex, propChanged) {
             if (!prop || !prop.images || prop.images.length === 0) return;
             const nextImageUrl = prop.images[imgIndex];
 
             // Precargar imagen
-            nextImgObj = await preloadImage(nextImageUrl);
+            const loadedImg = await preloadImage(nextImageUrl);
 
-            if (!nextImgObj) {
-                // En caso de fallo de imagen, intentar avanzar tras un breve instante
-                slideTimeout = setTimeout(() => nextSlide(false), 1000);
+            if (!loadedImg) {
+                // Si la imagen no está disponible, no pintar negro: reintentar con la siguiente
+                console.warn("Imagen no disponible, saltando:", nextImageUrl);
+                slideTimeout = setTimeout(() => nextSlide(false), 800);
                 return;
             }
+
+            // Si hay una animación de fundido anterior en curso, cancelarla limpiamente
+            if (fadeAnimationId) {
+                cancelAnimationFrame(fadeAnimationId);
+                fadeAnimationId = null;
+            }
+
+            // Si se estaba transicionando, consolidar la que estaba entrando
+            if (isFading && nextImgObj) {
+                currentImgObj = nextImgObj;
+            }
+
+            nextImgObj = loadedImg;
 
             if (propChanged) {
                 updateDOMInfo(prop);
             }
 
-            // Iniciar fundido suave
-            isFading = true;
-            fadeStartTime = 0;
-            requestAnimationFrame(animateFade);
+            if (!currentImgObj) {
+                currentImgObj = loadedImg;
+                drawStatic();
+            } else {
+                // Iniciar fundido suave continuo
+                isFading = true;
+                fadeStartTime = 0;
+                fadeAnimationId = requestAnimationFrame(animateFade);
+            }
 
-            // Precargar la imagen siguiente
+            // Precargar la imagen siguiente silenciosamente en caché
             const nextIdx = (imgIndex + 1) % prop.images.length;
             if (prop.images[nextIdx]) {
                 preloadImage(prop.images[nextIdx]);
@@ -496,13 +521,6 @@
         async function nextSlide(manual = false) {
             if (!propList || propList.length === 0) return;
             clearSlideTimer();
-
-            // Si se presiona manualmente mientras hay fundido, finalizar de inmediato
-            if (isFading && manual) {
-                isFading = false;
-                currentImgObj = nextImgObj;
-                drawStatic();
-            }
 
             const currentProp = propList[currentPropIndex];
             currentImageIndex++;
@@ -525,15 +543,9 @@
         /**
          * Retroceder al slide anterior
          */
-        async function prevSlide() {
+        async function prevSlide(manual = false) {
             if (!propList || propList.length === 0) return;
             clearSlideTimer();
-
-            if (isFading) {
-                isFading = false;
-                currentImgObj = nextImgObj;
-                drawStatic();
-            }
 
             let propChanged = false;
             currentImageIndex--;
@@ -559,10 +571,15 @@
             closeAdminModal();
             clearSlideTimer();
 
+            if (fadeAnimationId) {
+                cancelAnimationFrame(fadeAnimationId);
+                fadeAnimationId = null;
+            }
+            isFading = false;
+
             // Verificar si ya está en la lista de reproducción
             let index = propList.findIndex(p => p.id === prop.id || p.title === prop.title);
             if (index === -1) {
-                // Insertar justo a continuación para que continúe la reproducción desde aquí
                 propList.splice(currentPropIndex + 1, 0, prop);
                 currentPropIndex = currentPropIndex + 1;
             } else {
@@ -574,11 +591,17 @@
 
             const firstImg = (prop.images && prop.images.length > 0) ? prop.images[0] : null;
             if (firstImg) {
-                nextImgObj = await preloadImage(firstImg);
-                if (nextImgObj) {
-                    isFading = true;
-                    fadeStartTime = 0;
-                    requestAnimationFrame(animateFade);
+                const loadedImg = await preloadImage(firstImg);
+                if (loadedImg) {
+                    nextImgObj = loadedImg;
+                    if (!currentImgObj) {
+                        currentImgObj = loadedImg;
+                        drawStatic();
+                    } else {
+                        isFading = true;
+                        fadeStartTime = 0;
+                        fadeAnimationId = requestAnimationFrame(animateFade);
+                    }
                 }
             }
 
@@ -586,7 +609,6 @@
                 preloadImage(prop.images[1]);
             }
 
-            // Reanudar la reproducción automática en la propiedad elegida
             isPaused = false;
             elPauseBadge.classList.add('hidden');
             startSlideTimer();
@@ -794,7 +816,7 @@
             // Flecha Izquierda (←): retroceder a la imagen anterior
             if (e.key === 'ArrowLeft') {
                 e.preventDefault();
-                prevSlide();
+                prevSlide(true);
                 return;
             }
 
@@ -807,7 +829,7 @@
         });
 
         /**
-         * Cargar catálogo completo desde data/propiedades.json
+         * Cargar catálogo desde data/propiedades.json (manteniendo activas solo las de presentación)
          */
         async function loadCatalogData() {
             try {
@@ -816,12 +838,12 @@
                     const json = await res.json();
                     if (json && Array.isArray(json.propiedades) && json.propiedades.length > 0) {
                         const normalizedList = json.propiedades.map(normalizeProp);
-                        allCatalogProperties = normalizedList;
 
-                        // Si hay propiedades activas en el JSON, sincronizar la cartelera activa
-                        const activeList = normalizedList.filter(p => p.activa);
+                        // Filtrar únicamente las propiedades activas de presentación
+                        const activeList = normalizedList.filter(p => p.activa === true);
                         if (activeList.length > 0) {
                             propList = activeList;
+                            allCatalogProperties = activeList;
                         }
                     }
                 }
