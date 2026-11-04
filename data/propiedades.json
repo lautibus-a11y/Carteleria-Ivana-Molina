@@ -303,9 +303,7 @@
       "ambientes": "4 Amb.",
       "dormitorios": "3 Dorm. (1 suite)",
       "caracteristicas": [
-        "Pileta con Solárium",
-        "Apto Crédito",
-        "Riego por aspersión"
+        "Pileta con Solárium"
       ],
       "imagenes": [
         "assets/propiedades_de_presentacion/Cosquin_--_1120/limpia_01_1.jpg",
@@ -647,7 +645,6 @@
       "ambientes": "2 Amb. amplios",
       "dormitorios": "1 Dorm. en suite",
       "caracteristicas": [
-        "Apto Crédito",
         "Gran Parque y Galería",
         "Salamandra a Leña"
       ],

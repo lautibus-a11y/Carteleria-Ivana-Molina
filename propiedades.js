@@ -82,7 +82,7 @@ const properties = [
         "m2": "1.316 m² lote / 114 m² cub.",
         "ambientes": "2 Amb. amplios",
         "dormitorios": "1 Dorm. en suite",
-        "custom": "Apto Crédito",
+        "custom": "",
         "price": "USD 135.000",
         "description": "Hermosa propiedad de 8 años de antigüedad sobre lote de 1.316 m² cercado y parquizado. 114 m² cubiertos en doble pared de ladrillo visto, aberturas DVH, ambiente integrado con salamandra, suite con vestidor, galería semicubierta/quincho. Apta crédito hipotecario.",
         "images": [
