@@ -22,6 +22,20 @@
             user-select: none;
             -webkit-user-drag: none;
         }
+        /* Scrollbar elegante para el modal de administración */
+        #modal-properties-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+        #modal-properties-grid::-webkit-scrollbar-track {
+            background: #18181b;
+        }
+        #modal-properties-grid::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 4px;
+        }
+        #modal-properties-grid::-webkit-scrollbar-thumb:hover {
+            background: #52525b;
+        }
     </style>
 </head>
 <body class="h-screen w-screen flex flex-col relative">
@@ -31,8 +45,15 @@
         <!-- Logo en tamaño prominente y legible para Smart TV -->
         <img src="assets/logo.png" alt="Ivana Molina & Asociados" class="h-28 w-28 object-contain drop-shadow-lg">
         
-        <div id="status-badge" class="border border-white/70 px-5 py-2 text-base tracking-widest uppercase text-white rounded bg-black/30 backdrop-blur-sm shadow-md">
-            En Venta
+        <div class="flex items-center gap-4">
+            <!-- Indicador de Pausa discreto -->
+            <div id="pause-badge" class="hidden border border-amber-400/80 px-4 py-2 text-sm tracking-widest uppercase text-amber-300 rounded bg-black/60 backdrop-blur-sm shadow-md flex items-center gap-2">
+                <svg class="w-4 h-4 fill-current text-amber-400" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+                <span>Pausado</span>
+            </div>
+            <div id="status-badge" class="border border-white/70 px-5 py-2 text-base tracking-widest uppercase text-white rounded bg-black/30 backdrop-blur-sm shadow-md">
+                En Venta
+            </div>
         </div>
     </header>
 
@@ -43,24 +64,73 @@
     </main>
 
     <!-- FRANJA INFERIOR -->
-    <footer class="bg-zinc-100 text-zinc-900 py-6 min-h-[140px] px-10 flex justify-between items-center flex-shrink-0 z-10 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
-        <div class="flex flex-col justify-center gap-1.5">
-            <h2 id="prop-title" class="text-3xl font-semibold tracking-wide text-zinc-800 transition-opacity duration-500">
+    <footer class="bg-zinc-100 text-zinc-900 py-3.5 min-h-[105px] px-8 flex justify-between items-center flex-shrink-0 z-10 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <div class="flex flex-col justify-center gap-1">
+            <h2 id="prop-title" class="text-2xl font-semibold tracking-wide text-zinc-800 transition-opacity duration-500">
                 Cargando propiedades...
             </h2>
-            <div id="prop-location" class="flex items-center gap-2 text-zinc-600 text-lg tracking-wide transition-opacity duration-500">
+            <div id="prop-location" class="flex items-center gap-1.5 text-zinc-600 text-base tracking-wide transition-opacity duration-500">
                 Ubicación
             </div>
-            <div id="prop-features" class="flex items-center gap-6 text-zinc-500 text-base tracking-wide transition-opacity duration-500 mt-1">
+            <div id="prop-features" class="flex items-center gap-5 text-zinc-500 text-sm tracking-wide transition-opacity duration-500 mt-0.5">
                 Detalles
             </div>
         </div>
         <div class="flex flex-col justify-center items-end">
-            <span id="prop-price" class="text-5xl font-light tracking-tight text-zinc-900 transition-opacity duration-500">
+            <span id="prop-price" class="text-4xl font-light tracking-tight text-zinc-900 transition-opacity duration-500">
                 --
             </span>
         </div>
     </footer>
+
+    <!-- MENÚ DE ADMINISTRACIÓN OCULTO (TECLA B) -->
+    <div id="admin-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-6 sm:p-10 transition-opacity">
+        <div class="bg-zinc-900 border border-zinc-700 w-full max-w-6xl max-h-[90vh] rounded-xl flex flex-col shadow-2xl overflow-hidden text-zinc-100">
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-zinc-800 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-zinc-950/60">
+                <div class="flex items-center gap-4">
+                    <img src="assets/logo.png" alt="Logo" class="h-10 w-10 object-contain">
+                    <div>
+                        <h2 class="text-xl font-semibold text-white tracking-wide">Selector de Propiedades</h2>
+                        <p class="text-xs text-zinc-400">Seleccioná un inmueble para proyectarlo inmediatamente en la cartelera</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-xs text-zinc-400 hidden sm:inline-block bg-zinc-800 px-3 py-1.5 rounded border border-zinc-700">Presioná <strong class="text-white">B</strong> o <strong class="text-white">Esc</strong> para cerrar</span>
+                    <button id="btn-close-modal" class="text-zinc-400 hover:text-white bg-zinc-800 hover:bg-zinc-700 p-2 rounded-lg transition-colors cursor-pointer" title="Cerrar">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Filtros y Pestañas -->
+            <div class="px-6 py-4 border-b border-zinc-800 bg-zinc-900/90 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <!-- Tabs -->
+                <div class="flex items-center gap-1 bg-zinc-950 p-1 rounded-lg border border-zinc-800 w-full sm:w-auto">
+                    <button id="tab-todos" class="tab-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all bg-white text-zinc-900 shadow-sm cursor-pointer" data-tab="todos">Todas</button>
+                    <button id="tab-venta" class="tab-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all text-zinc-400 hover:text-white cursor-pointer" data-tab="venta">Venta</button>
+                    <button id="tab-alquiler" class="tab-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all text-zinc-400 hover:text-white cursor-pointer" data-tab="alquiler">Alquiler</button>
+                </div>
+
+                <!-- Input Buscador -->
+                <div class="relative w-full sm:w-96">
+                    <svg class="w-5 h-5 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input id="search-input" type="text" placeholder="Buscar por título, ubicación, precio..." class="w-full bg-zinc-950 border border-zinc-700 focus:border-white focus:outline-none pl-10 pr-4 py-2 rounded-lg text-sm text-white placeholder-zinc-500 transition-colors">
+                </div>
+            </div>
+
+            <!-- Modal Body (Grilla de propiedades con scroll) -->
+            <div id="modal-properties-grid" class="flex-grow overflow-y-auto p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 min-h-[300px]">
+                <!-- Se llena dinámicamente -->
+            </div>
+
+            <!-- Modal Footer con contador -->
+            <div class="px-6 py-3 border-t border-zinc-800 bg-zinc-950/40 text-xs text-zinc-400 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <span id="properties-count">0 propiedades</span>
+                <span>Atajos: <kbd class="bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-200">←</kbd> <kbd class="bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-200">→</kbd> fotos | <kbd class="bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-200">Espacio</kbd> pausar/reanudar | <kbd class="bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-200">B</kbd> buscador</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Carga de la lista de propiedades reales -->
     <script src="propiedades.js"></script>
@@ -87,10 +157,43 @@
             }
         ];
 
-        // Cargar propiedades reales desde propiedades.js o fallback
-        const propList = (typeof properties !== 'undefined' && Array.isArray(properties) && properties.length > 0)
+        /**
+         * Normalizador unificado de propiedades
+         * Soporta tanto el formato de propiedades.js como data/propiedades.json
+         */
+        function normalizeProp(p) {
+            if (!p) return null;
+            const operacion = (p.status || p.operacion || 'EN VENTA').toUpperCase();
+            let customText = '';
+            if (Array.isArray(p.caracteristicas)) {
+                customText = p.caracteristicas.join(' · ');
+            } else if (p.custom) {
+                customText = p.custom;
+            }
+            const rawImages = p.images || p.imagenes || [];
+            const imgs = Array.isArray(rawImages) ? rawImages.filter(Boolean) : [];
+            return {
+                id: p.id || p.title || p.titulo || String(Math.random()),
+                title: p.title || p.titulo || 'Sin título',
+                location: p.location || p.ubicacion || '',
+                m2: p.m2 || p.superficie || '',
+                ambientes: p.ambientes || '',
+                dormitorios: p.dormitorios || '',
+                custom: customText,
+                price: p.price || p.precio || '--',
+                status: operacion,
+                images: imgs,
+                activa: p.activa !== false
+            };
+        }
+
+        // Cargar propiedades iniciales desde propiedades.js o fallback
+        let rawInitialProps = (typeof properties !== 'undefined' && Array.isArray(properties) && properties.length > 0)
             ? properties
             : defaultProperties;
+
+        let propList = rawInitialProps.map(normalizeProp);
+        let allCatalogProperties = [...propList]; // Se complementará con data/propiedades.json si está accesible
 
         // Configuración de tiempos
         const TIME_PER_SLIDE = 7000; // 7 segundos por foto
@@ -99,6 +202,11 @@
         // Variables de estado
         let currentPropIndex = 0;
         let currentImageIndex = 0;
+        let isPaused = false;
+        let isPausedBeforeModal = false;
+        let slideTimeout = null;
+        let currentTab = 'todos'; // 'todos' | 'venta' | 'alquiler'
+        let searchQuery = '';
         
         // Elementos del DOM
         const canvas = document.getElementById('photo-canvas');
@@ -111,6 +219,7 @@
         const elFeatures = document.getElementById('prop-features');
         const elPrice = document.getElementById('prop-price');
         const elStatus = document.getElementById('status-badge');
+        const elPauseBadge = document.getElementById('pause-badge');
 
         // Caché de imágenes para evitar parpadeos y cargas lentas durante la presentación
         const imageCache = {};
@@ -126,7 +235,7 @@
          */
         function resizeCanvas() {
             canvas.width = container.clientWidth || window.innerWidth;
-            canvas.height = container.clientHeight || (window.innerHeight - 140);
+            canvas.height = container.clientHeight || (window.innerHeight - 105);
             drawStatic(); // Redibujar si redimensionamos la ventana
         }
         window.addEventListener('resize', resizeCanvas);
@@ -173,7 +282,7 @@
                 }
                 const img = new Image();
                 if (url.startsWith('http://') || url.startsWith('https://')) {
-                    img.crossOrigin = "Anonymous"; // Solo para URLs web
+                    img.crossOrigin = "Anonymous";
                 }
                 img.onload = () => {
                     imageCache[url] = img;
@@ -181,7 +290,7 @@
                 };
                 img.onerror = () => {
                     console.warn("No se pudo cargar la imagen:", url);
-                    resolve(null); // Resolvemos null para no frenar la ejecución
+                    resolve(null);
                 };
                 img.src = url;
             });
@@ -204,7 +313,7 @@
                 
                 // Línea 2: Ubicación
                 elLocation.innerHTML = `
-                    <svg class="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
@@ -216,7 +325,7 @@
                 if (prop.m2) {
                     featuresHTML += `
                         <span class="flex items-center gap-1.5">
-                            <svg class="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                            <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
                             ${prop.m2}
                         </span>
                     `;
@@ -224,7 +333,7 @@
                 if (prop.ambientes) {
                     featuresHTML += `
                         <span class="flex items-center gap-1.5">
-                            <svg class="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                            <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                             ${prop.ambientes}
                         </span>
                     `;
@@ -232,7 +341,7 @@
                 if (prop.dormitorios) {
                     featuresHTML += `
                         <span class="flex items-center gap-1.5">
-                            <svg class="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v11m0-4h18m0 4v-8a2 2 0 00-2-2h-8v6m-4 0v-4a1 1 0 011-1h2a1 1 0 011 1v4"></path></svg>
+                            <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v11m0-4h18m0 4v-8a2 2 0 00-2-2h-8v6m-4 0v-4a1 1 0 011-1h2a1 1 0 011 1v4"></path></svg>
                             ${prop.dormitorios}
                         </span>
                     `;
@@ -240,14 +349,12 @@
                 if (prop.custom) {
                     const isTree = /espacio verde|verde|arboleda|parque|jard[ií]n|terreno/i.test(prop.custom);
                     const isPool = /pileta|piscina/i.test(prop.custom);
-                    let customIcon = `<svg class="w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>`;
+                    let customIcon = `<svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>`;
                     
                     if (isTree) {
-                        // SVG Arbolito para Espacio Verde / Parque
-                        customIcon = `<svg class="w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v-7m0 0l-2-2m2 2l2-2M12 3a6 6 0 00-6 6c0 2.1 1.1 3.9 2.7 5h6.6c1.6-1.1 2.7-2.9 2.7-5a6 6 0 00-6-6z"></path></svg>`;
+                        customIcon = `<svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v-7m0 0l-2-2m2 2l2-2M12 3a6 6 0 00-6 6c0 2.1 1.1 3.9 2.7 5h6.6c1.6-1.1 2.7-2.9 2.7-5a6 6 0 00-6-6z"></path></svg>`;
                     } else if (isPool) {
-                        // SVG Pileta / Piscina
-                        customIcon = `<svg class="w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 20c1.5 0 2.5-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1M3 16c1.5 0 2.5-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1M7 15V6a2 2 0 012-2h1a2 2 0 012 2v9M7 9h5M7 13h5"></path></svg>`;
+                        customIcon = `<svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 20c1.5 0 2.5-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1M3 16c1.5 0 2.5-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1M7 15V6a2 2 0 012-2h1a2 2 0 012 2v9M7 9h5M7 13h5"></path></svg>`;
                     }
 
                     featuresHTML += `
@@ -267,7 +374,7 @@
                 elFeatures.style.opacity = 1;
                 elPrice.style.opacity = 1;
                 elStatus.style.opacity = 1;
-            }, 300); // Pequeño delay para que coincida visualmente el texto
+            }, 300);
         }
 
         /**
@@ -319,97 +426,437 @@
         }
 
         /**
-         * Lógica principal para avanzar al siguiente slide
+         * Gestión controlada del temporizador de diapositivas
          */
-        async function nextSlide() {
+        function startSlideTimer() {
+            clearSlideTimer();
+            if (!isPaused) {
+                slideTimeout = setTimeout(() => {
+                    nextSlide(false);
+                }, TIME_PER_SLIDE);
+            }
+        }
+
+        function clearSlideTimer() {
+            if (slideTimeout) {
+                clearTimeout(slideTimeout);
+                slideTimeout = null;
+            }
+        }
+
+        /**
+         * Pausar o reanudar la reproducción
+         */
+        function togglePause() {
+            isPaused = !isPaused;
+            if (isPaused) {
+                clearSlideTimer();
+                elPauseBadge.classList.remove('hidden');
+            } else {
+                elPauseBadge.classList.add('hidden');
+                startSlideTimer();
+            }
+        }
+
+        /**
+         * Mostrar una diapositiva específica
+         */
+        async function displaySlide(prop, imgIndex, propChanged) {
+            if (!prop || !prop.images || prop.images.length === 0) return;
+            const nextImageUrl = prop.images[imgIndex];
+
+            // Precargar imagen
+            nextImgObj = await preloadImage(nextImageUrl);
+
+            if (!nextImgObj) {
+                // En caso de fallo de imagen, intentar avanzar tras un breve instante
+                slideTimeout = setTimeout(() => nextSlide(false), 1000);
+                return;
+            }
+
+            if (propChanged) {
+                updateDOMInfo(prop);
+            }
+
+            // Iniciar fundido suave
+            isFading = true;
+            fadeStartTime = 0;
+            requestAnimationFrame(animateFade);
+
+            // Precargar la imagen siguiente
+            const nextIdx = (imgIndex + 1) % prop.images.length;
+            if (prop.images[nextIdx]) {
+                preloadImage(prop.images[nextIdx]);
+            }
+        }
+
+        /**
+         * Avanzar al siguiente slide (foto o propiedad)
+         */
+        async function nextSlide(manual = false) {
             if (!propList || propList.length === 0) return;
+            clearSlideTimer();
+
+            // Si se presiona manualmente mientras hay fundido, finalizar de inmediato
+            if (isFading && manual) {
+                isFading = false;
+                currentImgObj = nextImgObj;
+                drawStatic();
+            }
+
             const currentProp = propList[currentPropIndex];
-            
-            // Avanzar índices
             currentImageIndex++;
             let propChanged = false;
 
-            // Si terminamos las fotos de esta propiedad, pasamos a la siguiente
             if (currentImageIndex >= currentProp.images.length) {
                 currentImageIndex = 0;
                 currentPropIndex++;
                 propChanged = true;
                 
-                // Si terminamos todas las propiedades, volvemos a la primera (loop infinito)
                 if (currentPropIndex >= propList.length) {
                     currentPropIndex = 0;
                 }
             }
 
-            const newProp = propList[currentPropIndex];
-            const nextImageUrl = newProp.images[currentImageIndex];
-
-            // Precargar la imagen que sigue
-            nextImgObj = await preloadImage(nextImageUrl);
-
-            // Si la imagen no pudo cargar, saltar a la siguiente tras un breve momento
-            if (!nextImgObj) {
-                setTimeout(nextSlide, 1000);
-                return;
-            }
-
-            // Actualizar textos si cambió la propiedad
-            if (propChanged) {
-                updateDOMInfo(newProp);
-            }
-
-            // Iniciar animación de fundido
-            isFading = true;
-            fadeStartTime = 0; // Resetear tiempo para la nueva animación
-            requestAnimationFrame(animateFade);
+            await displaySlide(propList[currentPropIndex], currentImageIndex, propChanged);
+            startSlideTimer();
         }
 
         /**
-         * Alternar pantalla completa al presionar la tecla 'F'
+         * Retroceder al slide anterior
          */
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                if (document.documentElement.requestFullscreen) {
-                    document.documentElement.requestFullscreen();
-                } else if (document.documentElement.webkitRequestFullscreen) {
-                    document.documentElement.webkitRequestFullscreen();
+        async function prevSlide() {
+            if (!propList || propList.length === 0) return;
+            clearSlideTimer();
+
+            if (isFading) {
+                isFading = false;
+                currentImgObj = nextImgObj;
+                drawStatic();
+            }
+
+            let propChanged = false;
+            currentImageIndex--;
+
+            if (currentImageIndex < 0) {
+                currentPropIndex--;
+                propChanged = true;
+                if (currentPropIndex < 0) {
+                    currentPropIndex = propList.length - 1;
                 }
+                const prevProp = propList[currentPropIndex];
+                currentImageIndex = Math.max(0, (prevProp.images ? prevProp.images.length : 1) - 1);
+            }
+
+            await displaySlide(propList[currentPropIndex], currentImageIndex, propChanged);
+            startSlideTimer();
+        }
+
+        /**
+         * Saltar directamente a una propiedad elegida desde el menú selector
+         */
+        async function jumpToProperty(prop) {
+            closeAdminModal();
+            clearSlideTimer();
+
+            // Verificar si ya está en la lista de reproducción
+            let index = propList.findIndex(p => p.id === prop.id || p.title === prop.title);
+            if (index === -1) {
+                // Insertar justo a continuación para que continúe la reproducción desde aquí
+                propList.splice(currentPropIndex + 1, 0, prop);
+                currentPropIndex = currentPropIndex + 1;
+            } else {
+                currentPropIndex = index;
+            }
+
+            currentImageIndex = 0;
+            updateDOMInfo(prop);
+
+            const firstImg = (prop.images && prop.images.length > 0) ? prop.images[0] : null;
+            if (firstImg) {
+                nextImgObj = await preloadImage(firstImg);
+                if (nextImgObj) {
+                    isFading = true;
+                    fadeStartTime = 0;
+                    requestAnimationFrame(animateFade);
+                }
+            }
+
+            if (prop.images && prop.images.length > 1) {
+                preloadImage(prop.images[1]);
+            }
+
+            // Reanudar la reproducción automática en la propiedad elegida
+            isPaused = false;
+            elPauseBadge.classList.add('hidden');
+            startSlideTimer();
+        }
+
+        /**
+         * Alternar y activar pantalla completa
+         */
+        function tryEnterFullscreen() {
+            if (document.fullscreenElement || document.webkitFullscreenElement) return;
+            const docEl = document.documentElement;
+            const rfs = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+            if (rfs) {
+                rfs.call(docEl).catch(() => {
+                    // Silencioso si el navegador requiere interacción previa
+                });
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                tryEnterFullscreen();
             } else {
                 if (document.exitFullscreen) {
-                    document.exitFullscreen();
+                    document.exitFullscreen().catch(() => {});
                 } else if (document.webkitExitFullscreen) {
                     document.webkitExitFullscreen();
                 }
             }
         }
 
+        /**
+         * Lógica del Menú de Administración Oculto (Tecla B)
+         */
+        function openAdminModal() {
+            const modal = document.getElementById('admin-modal');
+            modal.classList.remove('hidden');
+            isPausedBeforeModal = isPaused;
+            isPaused = true;
+            clearSlideTimer();
+            renderCatalogGrid();
+            setTimeout(() => {
+                const search = document.getElementById('search-input');
+                if (search) search.focus();
+            }, 80);
+        }
+
+        function closeAdminModal() {
+            const modal = document.getElementById('admin-modal');
+            modal.classList.add('hidden');
+            const search = document.getElementById('search-input');
+            if (search) search.value = '';
+            searchQuery = '';
+            if (!isPausedBeforeModal) {
+                isPaused = false;
+                startSlideTimer();
+            }
+        }
+
+        function renderCatalogGrid() {
+            const grid = document.getElementById('modal-properties-grid');
+            const countEl = document.getElementById('properties-count');
+            if (!grid) return;
+
+            const q = searchQuery.toLowerCase().trim();
+
+            let filtered = allCatalogProperties.filter(p => {
+                // Filtro por pestaña
+                if (currentTab === 'venta' && !p.status.includes('VENTA')) return false;
+                if (currentTab === 'alquiler' && !p.status.includes('ALQUILER')) return false;
+
+                // Filtro por búsqueda de texto
+                if (q !== '') {
+                    const matchTitle = (p.title || '').toLowerCase().includes(q);
+                    const matchLoc = (p.location || '').toLowerCase().includes(q);
+                    const matchPrice = (p.price || '').toLowerCase().includes(q);
+                    const matchCustom = (p.custom || '').toLowerCase().includes(q);
+                    return matchTitle || matchLoc || matchPrice || matchCustom;
+                }
+                return true;
+            });
+
+            countEl.textContent = `${filtered.length} propiedad${filtered.length === 1 ? '' : 'es'} encontrada${filtered.length === 1 ? '' : 's'}`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center text-zinc-400">
+                        <svg class="w-12 h-12 mx-auto mb-3 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        <p class="text-base font-medium">No se encontraron propiedades</p>
+                        <p class="text-xs text-zinc-500 mt-1">Probá con otro término de búsqueda o seleccioná otra pestaña</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => {
+                const coverImg = (p.images && p.images.length > 0) ? p.images[0] : 'assets/logo.png';
+                const isAlq = p.status.includes('ALQUILER');
+                const badgeStyle = isAlq 
+                    ? 'bg-emerald-950/90 text-emerald-300 border-emerald-600/70' 
+                    : 'bg-zinc-950/90 text-zinc-200 border-zinc-500/70';
+                return `
+                    <div class="property-card group cursor-pointer bg-zinc-950 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-500 rounded-lg overflow-hidden transition-all duration-200 flex flex-col shadow-sm" data-id="${p.id}">
+                        <div class="relative w-full h-36 bg-zinc-900 overflow-hidden">
+                            <img src="${coverImg}" alt="${p.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='assets/logo.png'">
+                            <span class="absolute top-2 right-2 text-[10px] tracking-wider uppercase font-semibold px-2 py-0.5 rounded border backdrop-blur-sm ${badgeStyle}">
+                                ${p.status}
+                            </span>
+                            ${p.images && p.images.length > 0 ? `<span class="absolute bottom-2 left-2 bg-black/70 backdrop-blur-sm text-[10px] text-zinc-300 px-1.5 py-0.5 rounded font-mono">📷 ${p.images.length}</span>` : ''}
+                        </div>
+                        <div class="p-3.5 flex flex-col flex-grow justify-between gap-2">
+                            <div>
+                                <h4 class="font-medium text-sm text-white line-clamp-1 group-hover:text-amber-200 transition-colors">${p.title}</h4>
+                                <p class="text-xs text-zinc-400 line-clamp-1 mt-0.5">${p.location || 'Consultar ubicación'}</p>
+                            </div>
+                            <div class="flex items-center justify-between text-xs pt-1.5 border-t border-zinc-800/80">
+                                <span class="text-zinc-400 font-light truncate max-w-[120px]">${p.m2 || p.ambientes || ''}</span>
+                                <span class="font-semibold text-zinc-100">${p.price}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Asignar evento click a cada tarjeta
+            grid.querySelectorAll('.property-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const propId = card.getAttribute('data-id');
+                    const selected = allCatalogProperties.find(p => String(p.id) === String(propId));
+                    if (selected) {
+                        jumpToProperty(selected);
+                    }
+                });
+            });
+        }
+
+        // Configuración de pestañas
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('bg-white', 'text-zinc-900', 'shadow-sm');
+                    b.classList.add('text-zinc-400', 'hover:text-white');
+                });
+                btn.classList.add('bg-white', 'text-zinc-900', 'shadow-sm');
+                btn.classList.remove('text-zinc-400', 'hover:text-white');
+                currentTab = btn.getAttribute('data-tab');
+                renderCatalogGrid();
+            });
+        });
+
+        // Configuración de buscador
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderCatalogGrid();
+        });
+
+        // Botón cerrar modal
+        document.getElementById('btn-close-modal').addEventListener('click', closeAdminModal);
+
+        /**
+         * Manejador de eventos de teclado
+         */
         window.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('admin-modal');
+            const modalOpen = modal && !modal.classList.contains('hidden');
+            const isInputFocused = document.activeElement && document.activeElement.tagName === 'INPUT';
+
+            // Tecla B o b: abre o cierra el menú oculto
+            if ((e.key === 'b' || e.key === 'B') && !isInputFocused) {
+                e.preventDefault();
+                if (modalOpen) {
+                    closeAdminModal();
+                } else {
+                    openAdminModal();
+                }
+                return;
+            }
+
+            // Tecla Escape: cierra el menú si está abierto
+            if (e.key === 'Escape' && modalOpen) {
+                e.preventDefault();
+                closeAdminModal();
+                return;
+            }
+
+            // Si el modal está abierto y está escribiendo, permitir uso normal del teclado
+            if (modalOpen) {
+                return;
+            }
+
+            // Tecla F: alternar pantalla completa
             if (e.key === 'f' || e.key === 'F') {
+                e.preventDefault();
                 toggleFullscreen();
+                return;
+            }
+
+            // Flecha Derecha (→): avanzar a la siguiente imagen
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlide(true);
+                return;
+            }
+
+            // Flecha Izquierda (←): retroceder a la imagen anterior
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+                return;
+            }
+
+            // Barra Espaciadora: pausar y reanudar
+            if (e.key === ' ' || e.code === 'Space') {
+                e.preventDefault();
+                togglePause();
+                return;
             }
         });
+
+        /**
+         * Cargar catálogo completo desde data/propiedades.json
+         */
+        async function loadCatalogData() {
+            try {
+                const res = await fetch('data/propiedades.json');
+                if (res.ok) {
+                    const json = await res.json();
+                    if (json && Array.isArray(json.propiedades) && json.propiedades.length > 0) {
+                        const normalizedList = json.propiedades.map(normalizeProp);
+                        allCatalogProperties = normalizedList;
+
+                        // Si hay propiedades activas en el JSON, sincronizar la cartelera activa
+                        const activeList = normalizedList.filter(p => p.activa);
+                        if (activeList.length > 0) {
+                            propList = activeList;
+                        }
+                    }
+                }
+            } catch (err) {
+                console.log('Modo local (CORS/file://): Catálogo funcionando con propiedades disponibles en memoria.');
+            }
+        }
 
         /**
          * Inicializar la cartelera
          */
         async function initApp() {
             resizeCanvas();
-            
-            // Cargar primera propiedad e imagen
-            const prop = propList[0];
-            updateDOMInfo(prop);
-            
-            const firstImgUrl = prop.images[0];
-            currentImgObj = await preloadImage(firstImgUrl);
-            drawStatic();
 
-            // Precargar la siguiente imagen por adelantado para evitar lag
-            if (prop.images.length > 1) {
-                preloadImage(prop.images[1]);
+            // Cargar datos del catálogo completo en segundo plano
+            await loadCatalogData();
+
+            // Cargar primera propiedad e imagen
+            if (propList.length > 0) {
+                const prop = propList[0];
+                updateDOMInfo(prop);
+                
+                if (prop.images && prop.images.length > 0) {
+                    const firstImgUrl = prop.images[0];
+                    currentImgObj = await preloadImage(firstImgUrl);
+                    drawStatic();
+
+                    if (prop.images.length > 1) {
+                        preloadImage(prop.images[1]);
+                    }
+                }
             }
 
-            // Iniciar el ciclo de 7 segundos
-            setInterval(nextSlide, TIME_PER_SLIDE);
+            // Iniciar ciclo de reproducción
+            startSlideTimer();
         }
 
         // Arrancar la aplicación cuando la ventana cargue
