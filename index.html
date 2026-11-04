@@ -41,31 +41,31 @@
         }
 
         #admin-modal-container {
-            background-color: #121215;
-            border: 1px solid #27272a;
-            width: 100%;
-            max-width: 1200px;
-            height: 88vh;
-            max-height: 900px;
-            border-radius: 14px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-            overflow: hidden;
-            color: #f4f4f5;
+            background-color: #121216 !important;
+            border: 1px solid #2e2e38 !important;
+            width: 95vw !important;
+            max-width: 1650px !important;
+            height: 92vh !important;
+            max-height: 960px !important;
+            border-radius: 16px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9) !important;
+            overflow: hidden !important;
+            color: #f4f4f5 !important;
         }
 
         /* Grilla de propiedades */
         #modal-properties-grid {
             flex: 1 1 auto;
             overflow-y: auto;
-            padding: 20px 24px;
+            padding: 24px 28px !important;
             display: grid !important;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)) !important;
-            gap: 16px !important;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+            gap: 22px !important;
             align-content: start;
-            min-height: 200px;
-            background: #121215;
+            min-height: 250px;
+            background: #0d0d11 !important;
         }
 
         /* Scrollbar elegante */
@@ -85,138 +85,183 @@
 
         /* Tarjeta de propiedad */
         .prop-card {
-            background: #18181b;
-            border: 1px solid #27272a;
-            border-radius: 10px;
-            overflow: hidden;
+            background: #18181f !important;
+            border: 1px solid #2b2b36 !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
             cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            display: flex !important;
+            flex-direction: column !important;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
         }
         .prop-card:hover {
-            border-color: #71717a;
-            background: #202024;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px -2px rgba(0, 0, 0, 0.6);
+            border-color: #fde68a !important;
+            background: #22222b !important;
+            transform: translateY(-4px) scale(1.01) !important;
+            box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(253, 230, 138, 0.3) !important;
         }
 
         .prop-card-media {
-            position: relative;
-            width: 100%;
-            height: 140px;
-            background: #09090b;
-            overflow: hidden;
-            flex-shrink: 0;
+            position: relative !important;
+            width: 100% !important;
+            height: 190px !important;
+            background: #09090c !important;
+            overflow: hidden !important;
+            flex-shrink: 0 !important;
         }
         .prop-card-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+            transition: transform 0.4s ease !important;
         }
         .prop-card:hover .prop-card-media img {
-            transform: scale(1.05);
+            transform: scale(1.06) !important;
         }
 
         .prop-badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 3px 8px;
-            border-radius: 4px;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            position: absolute !important;
+            top: 10px !important;
+            right: 10px !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.06em !important;
+            text-transform: uppercase !important;
+            padding: 4px 10px !important;
+            border-radius: 6px !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.6) !important;
+            z-index: 2 !important;
         }
         .prop-badge-venta {
-            background: rgba(9, 9, 11, 0.85);
-            color: #f4f4f5;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(9, 9, 12, 0.88) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
         }
         .prop-badge-alquiler {
-            background: rgba(2, 44, 34, 0.88);
-            color: #6ee7b7;
-            border: 1px solid rgba(16, 185, 129, 0.5);
+            background: rgba(4, 47, 46, 0.92) !important;
+            color: #5eead4 !important;
+            border: 1px solid rgba(20, 184, 166, 0.7) !important;
         }
 
         .prop-photos-count {
-            position: absolute;
-            bottom: 8px;
-            left: 8px;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            font-size: 10px;
-            color: #d4d4d8;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: monospace;
+            position: absolute !important;
+            bottom: 10px !important;
+            left: 10px !important;
+            background: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(6px) !important;
+            -webkit-backdrop-filter: blur(6px) !important;
+            font-size: 11px !important;
+            color: #e4e4e7 !important;
+            padding: 3px 8px !important;
+            border-radius: 5px !important;
+            font-weight: 500 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            z-index: 2 !important;
         }
 
         .prop-card-body {
-            padding: 12px 14px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-            gap: 8px;
+            padding: 16px 18px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            flex-grow: 1 !important;
+            justify-content: space-between !important;
+            gap: 12px !important;
+            background: #18181f !important;
+        }
+
+        .prop-card-main-info {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
         }
 
         .prop-card-title {
-            font-size: 13.5px;
-            font-weight: 600;
-            color: #f4f4f5;
-            line-height: 1.35;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            transition: color 0.15s ease;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            color: #ffffff !important;
+            line-height: 1.35 !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            display: -webkit-box !important;
+            -webkit-line-clamp: 2 !important;
+            -webkit-box-orient: vertical !important;
+            transition: color 0.15s ease !important;
         }
         .prop-card:hover .prop-card-title {
-            color: #fde68a;
+            color: #fde68a !important;
         }
 
         .prop-card-loc {
-            font-size: 11.5px;
-            color: #a1a1aa;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            margin-top: 3px;
+            font-size: 13px !important;
+            color: #cbd5e1 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            white-space: nowrap !important;
+        }
+        .prop-loc-icon {
+            width: 15px !important;
+            height: 15px !important;
+            flex-shrink: 0 !important;
+            color: #94a3b8 !important;
+        }
+
+        .prop-card-pills {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 6px !important;
+            align-items: center !important;
+        }
+        .prop-card-pills span {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #cbd5e1 !important;
+            font-size: 11.5px !important;
+            padding: 3px 8px !important;
+            border-radius: 4px !important;
+            white-space: nowrap !important;
+            font-weight: 400 !important;
         }
 
         .prop-card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 11.5px;
-        }
-
-        .prop-card-meta {
-            color: #a1a1aa;
-            font-weight: 300;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            max-width: 110px;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            padding-top: 12px !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+            margin-top: 2px !important;
         }
 
         .prop-card-price {
-            font-weight: 600;
-            color: #ffffff;
-            font-size: 12.5px;
-            letter-spacing: -0.01em;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+            font-size: 16px !important;
+            letter-spacing: -0.01em !important;
+        }
+
+        .prop-card-action {
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            color: #d4d4d8 !important;
+            background: #27272a !important;
+            padding: 5px 11px !important;
+            border-radius: 6px !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            transition: all 0.15s ease !important;
+        }
+        .prop-card:hover .prop-card-action {
+            background: #fde68a !important;
+            color: #09090b !important;
+            border-color: #fde68a !important;
         }
 
         .tab-btn {
@@ -287,8 +332,8 @@
     </footer>
 
     <!-- MENÚ DE ADMINISTRACIÓN OCULTO (TECLA B) -->
-    <div id="admin-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-6 sm:p-10 transition-opacity">
-        <div id="admin-modal-container" class="bg-zinc-900 border border-zinc-700 w-full max-w-6xl max-h-[90vh] rounded-xl flex flex-col shadow-2xl overflow-hidden text-zinc-100">
+    <div id="admin-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 sm:p-6 transition-opacity">
+        <div id="admin-modal-container" class="bg-zinc-900 border border-zinc-700 w-full rounded-xl flex flex-col shadow-2xl overflow-hidden text-zinc-100">
             <!-- Modal Header -->
             <div class="p-6 border-b border-zinc-800 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-zinc-950/60">
                 <div class="flex items-center gap-4">
@@ -946,25 +991,37 @@
                 const safeTitle = (p.title || 'Propiedad').replace(/"/g, '&quot;');
                 const safeLocation = (p.location || 'Consultar ubicación').replace(/</g, '&lt;').replace(/>/g, '&gt;');
                 const safePrice = (p.price || '--').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                const metaText = (p.m2 || p.ambientes || p.custom || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+                // Pills de características reconocibles
+                const pills = [];
+                if (p.m2) pills.push(`<span>📏 ${p.m2}</span>`);
+                if (p.ambientes) pills.push(`<span>🏠 ${p.ambientes}</span>`);
+                if (p.dormitorios) pills.push(`<span>🛏️ ${p.dormitorios}</span>`);
+                if (p.pileta) pills.push(`<span>🏊 ${p.pileta}</span>`);
+                if (p.verde) pills.push(`<span>🌳 ${p.verde}</span>`);
+                const pillsHtml = pills.slice(0, 3).join('');
 
                 return `
                     <div class="property-card prop-card" data-id="${p.id}">
                         <div class="prop-card-media">
-                            <img src="${coverImg}" alt="${safeTitle}" loading="lazy" onerror="this.onerror=null; this.src='assets/logo.png';">
+                            <img src="${coverImg}" alt="${safeTitle}" loading="lazy" onerror="this.onerror=null; this.src='assets/logo.png'; this.style.objectFit='contain'; this.style.padding='24px';">
                             <span class="prop-badge ${badgeClass}">
                                 ${p.status}
                             </span>
-                            ${p.images && p.images.length > 0 ? `<span class="prop-photos-count">📷 ${p.images.length}</span>` : ''}
+                            ${p.images && p.images.length > 0 ? `<span class="prop-photos-count">📷 ${p.images.length} fotos</span>` : ''}
                         </div>
                         <div class="prop-card-body">
-                            <div>
-                                <h4 class="prop-card-title">${safeTitle}</h4>
-                                <p class="prop-card-loc">${safeLocation}</p>
+                            <div class="prop-card-main-info">
+                                <h4 class="prop-card-title" title="${safeTitle}">${safeTitle}</h4>
+                                <p class="prop-card-loc">
+                                    <svg class="prop-loc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                    <span>${safeLocation}</span>
+                                </p>
                             </div>
+                            ${pillsHtml ? `<div class="prop-card-pills">${pillsHtml}</div>` : ''}
                             <div class="prop-card-footer">
-                                <span class="prop-card-meta">${metaText}</span>
-                                <span class="prop-card-price">${safePrice}</span>
+                                <div class="prop-card-price">${safePrice}</div>
+                                <div class="prop-card-action">Proyectar ➔</div>
                             </div>
                         </div>
                     </div>
