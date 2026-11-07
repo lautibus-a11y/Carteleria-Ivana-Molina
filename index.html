@@ -55,17 +55,33 @@
             color: #f4f4f5 !important;
         }
 
-        /* Grilla de propiedades */
+        /* Grilla de propiedades: 3 columnas grandes en TV/Desktop, 2 en medianas, 1 en pequeñas */
         #modal-properties-grid {
             flex: 1 1 auto;
             overflow-y: auto;
-            padding: 24px 28px !important;
+            padding: 26px 32px !important;
             display: grid !important;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
-            gap: 22px !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 24px !important;
             align-content: start;
             min-height: 250px;
             background: #0d0d11 !important;
+        }
+
+        @media (max-width: 1280px) {
+            #modal-properties-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 20px !important;
+                padding: 20px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #modal-properties-grid {
+                grid-template-columns: 1fr !important;
+                padding: 16px !important;
+                gap: 16px !important;
+            }
         }
 
         /* Scrollbar elegante */
@@ -83,29 +99,31 @@
             background: #52525b;
         }
 
-        /* Tarjeta de propiedad */
+        /* Tarjeta de propiedad completa y expandida */
         .prop-card {
             background: #18181f !important;
-            border: 1px solid #2b2b36 !important;
-            border-radius: 12px !important;
+            border: 1px solid #2e2e3a !important;
+            border-radius: 14px !important;
             overflow: hidden !important;
             cursor: pointer;
             display: flex !important;
             flex-direction: column !important;
             transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5) !important;
+            min-height: 420px !important;
+            height: 100% !important;
         }
         .prop-card:hover {
             border-color: #fde68a !important;
-            background: #22222b !important;
+            background: #23232e !important;
             transform: translateY(-4px) scale(1.01) !important;
-            box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(253, 230, 138, 0.3) !important;
+            box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(253, 230, 138, 0.3) !important;
         }
 
         .prop-card-media {
             position: relative !important;
             width: 100% !important;
-            height: 190px !important;
+            height: 220px !important;
             background: #09090c !important;
             overflow: hidden !important;
             flex-shrink: 0 !important;
@@ -118,26 +136,26 @@
             transition: transform 0.4s ease !important;
         }
         .prop-card:hover .prop-card-media img {
-            transform: scale(1.06) !important;
+            transform: scale(1.05) !important;
         }
 
         .prop-badge {
             position: absolute !important;
-            top: 10px !important;
-            right: 10px !important;
-            font-size: 11px !important;
+            top: 12px !important;
+            right: 12px !important;
+            font-size: 11.5px !important;
             font-weight: 700 !important;
             letter-spacing: 0.06em !important;
             text-transform: uppercase !important;
-            padding: 4px 10px !important;
+            padding: 5px 12px !important;
             border-radius: 6px !important;
             backdrop-filter: blur(8px) !important;
             -webkit-backdrop-filter: blur(8px) !important;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.6) !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.6) !important;
             z-index: 2 !important;
         }
         .prop-badge-venta {
-            background: rgba(9, 9, 12, 0.88) !important;
+            background: rgba(15, 15, 20, 0.9) !important;
             color: #ffffff !important;
             border: 1px solid rgba(255, 255, 255, 0.35) !important;
         }
@@ -149,38 +167,38 @@
 
         .prop-photos-count {
             position: absolute !important;
-            bottom: 10px !important;
-            left: 10px !important;
-            background: rgba(0, 0, 0, 0.8) !important;
+            bottom: 12px !important;
+            left: 12px !important;
+            background: rgba(0, 0, 0, 0.82) !important;
             backdrop-filter: blur(6px) !important;
             -webkit-backdrop-filter: blur(6px) !important;
-            font-size: 11px !important;
+            font-size: 11.5px !important;
             color: #e4e4e7 !important;
-            padding: 3px 8px !important;
-            border-radius: 5px !important;
+            padding: 4px 10px !important;
+            border-radius: 6px !important;
             font-weight: 500 !important;
-            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
             z-index: 2 !important;
         }
 
         .prop-card-body {
-            padding: 16px 18px !important;
+            padding: 18px 20px !important;
             display: flex !important;
             flex-direction: column !important;
             flex-grow: 1 !important;
             justify-content: space-between !important;
-            gap: 12px !important;
+            gap: 14px !important;
             background: #18181f !important;
         }
 
         .prop-card-main-info {
             display: flex !important;
             flex-direction: column !important;
-            gap: 6px !important;
+            gap: 8px !important;
         }
 
         .prop-card-title {
-            font-size: 16px !important;
+            font-size: 17px !important;
             font-weight: 600 !important;
             color: #ffffff !important;
             line-height: 1.35 !important;
@@ -196,18 +214,18 @@
         }
 
         .prop-card-loc {
-            font-size: 13px !important;
+            font-size: 13.5px !important;
             color: #cbd5e1 !important;
             display: flex !important;
             align-items: center !important;
-            gap: 6px !important;
+            gap: 7px !important;
             overflow: hidden !important;
             text-overflow: ellipsis !important;
             white-space: nowrap !important;
         }
         .prop-loc-icon {
-            width: 15px !important;
-            height: 15px !important;
+            width: 16px !important;
+            height: 16px !important;
             flex-shrink: 0 !important;
             color: #94a3b8 !important;
         }
@@ -215,16 +233,16 @@
         .prop-card-pills {
             display: flex !important;
             flex-wrap: wrap !important;
-            gap: 6px !important;
+            gap: 8px !important;
             align-items: center !important;
         }
         .prop-card-pills span {
-            background: rgba(255, 255, 255, 0.06) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            background: rgba(255, 255, 255, 0.07) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
             color: #cbd5e1 !important;
-            font-size: 11.5px !important;
-            padding: 3px 8px !important;
-            border-radius: 4px !important;
+            font-size: 12px !important;
+            padding: 4px 10px !important;
+            border-radius: 6px !important;
             white-space: nowrap !important;
             font-weight: 400 !important;
         }
@@ -233,29 +251,29 @@
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
-            padding-top: 12px !important;
+            padding-top: 14px !important;
             border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-            margin-top: 2px !important;
+            margin-top: auto !important;
         }
 
         .prop-card-price {
             font-weight: 700 !important;
             color: #ffffff !important;
-            font-size: 16px !important;
+            font-size: 17px !important;
             letter-spacing: -0.01em !important;
         }
 
         .prop-card-action {
-            font-size: 12px !important;
+            font-size: 13px !important;
             font-weight: 600 !important;
             color: #d4d4d8 !important;
             background: #27272a !important;
-            padding: 5px 11px !important;
-            border-radius: 6px !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding: 6px 14px !important;
+            border-radius: 8px !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
             display: flex !important;
             align-items: center !important;
-            gap: 4px !important;
+            gap: 5px !important;
             transition: all 0.15s ease !important;
         }
         .prop-card:hover .prop-card-action {
@@ -353,11 +371,10 @@
 
             <!-- Modal Filtros y Pestañas -->
             <div class="px-6 py-4 border-b border-zinc-800 bg-zinc-900/90 flex flex-col sm:flex-row gap-4 items-center justify-between">
-                <!-- Tabs -->
+                <!-- Tabs (Solo Venta y Alquiler) -->
                 <div class="flex items-center gap-1 bg-zinc-950 p-1 rounded-lg border border-zinc-800 w-full sm:w-auto">
-                    <button id="tab-todos" class="tab-btn tab-active px-4 py-1.5 rounded-md text-sm font-medium transition-all bg-white text-zinc-900 shadow-sm cursor-pointer" data-tab="todos">Todas</button>
-                    <button id="tab-venta" class="tab-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all text-zinc-400 hover:text-white cursor-pointer" data-tab="venta">Venta</button>
-                    <button id="tab-alquiler" class="tab-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all text-zinc-400 hover:text-white cursor-pointer" data-tab="alquiler">Alquiler</button>
+                    <button id="tab-venta" class="tab-btn tab-active px-5 py-2 rounded-md text-sm font-semibold transition-all bg-white text-zinc-900 shadow-sm cursor-pointer" data-tab="venta">Venta</button>
+                    <button id="tab-alquiler" class="tab-btn px-5 py-2 rounded-md text-sm font-semibold transition-all text-zinc-400 hover:text-white cursor-pointer" data-tab="alquiler">Alquiler</button>
                 </div>
 
                 <!-- Input Buscador -->
@@ -368,7 +385,7 @@
             </div>
 
             <!-- Modal Body (Grilla de propiedades con scroll) -->
-            <div id="modal-properties-grid" class="flex-grow overflow-y-auto p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 min-h-[300px]">
+            <div id="modal-properties-grid">
                 <!-- Se llena dinámicamente -->
             </div>
 
@@ -482,7 +499,7 @@
         let isPaused = false;
         let isPausedBeforeModal = false;
         let slideTimeout = null;
-        let currentTab = 'todos'; // 'todos' | 'venta' | 'alquiler'
+        let currentTab = 'venta'; // 'venta' | 'alquiler'
         let searchQuery = '';
         
         // Elementos del DOM
@@ -951,9 +968,12 @@
             const q = searchQuery.toLowerCase().trim();
 
             let filtered = allCatalogProperties.filter(p => {
-                // Filtro por pestaña
-                if (currentTab === 'venta' && !p.status.includes('VENTA')) return false;
-                if (currentTab === 'alquiler' && !p.status.includes('ALQUILER')) return false;
+                // Filtro por pestaña (solo Venta y Alquiler)
+                if (currentTab === 'alquiler') {
+                    if (!p.status.includes('ALQUILER')) return false;
+                } else {
+                    if (!p.status.includes('VENTA')) return false;
+                }
 
                 // Filtro por búsqueda de texto
                 if (q !== '') {
@@ -966,7 +986,7 @@
                 return true;
             });
 
-            countEl.textContent = `${filtered.length} propiedad${filtered.length === 1 ? '' : 'es'} encontrada${filtered.length === 1 ? '' : 's'}`;
+            countEl.textContent = `${filtered.length} propiedad${filtered.length === 1 ? '' : 'es'} en ${currentTab === 'alquiler' ? 'Alquiler' : 'Venta'}`;
 
             if (filtered.length === 0) {
                 grid.innerHTML = `
@@ -994,12 +1014,13 @@
 
                 // Pills de características reconocibles
                 const pills = [];
-                if (p.m2) pills.push(`<span>📏 ${p.m2}</span>`);
-                if (p.ambientes) pills.push(`<span>🏠 ${p.ambientes}</span>`);
-                if (p.dormitorios) pills.push(`<span>🛏️ ${p.dormitorios}</span>`);
+                if (p.m2 && p.m2 !== '--') pills.push(`<span>📏 ${p.m2}</span>`);
+                if (p.ambientes && p.ambientes !== '--') pills.push(`<span>🏠 ${p.ambientes}</span>`);
+                if (p.dormitorios && p.dormitorios !== '--') pills.push(`<span>🛏️ ${p.dormitorios}</span>`);
                 if (p.pileta) pills.push(`<span>🏊 ${p.pileta}</span>`);
                 if (p.verde) pills.push(`<span>🌳 ${p.verde}</span>`);
-                const pillsHtml = pills.slice(0, 3).join('');
+                if (pills.length === 0 && p.custom) pills.push(`<span>✨ ${p.custom}</span>`);
+                const pillsHtml = pills.slice(0, 4).join('');
 
                 return `
                     <div class="property-card prop-card" data-id="${p.id}">
